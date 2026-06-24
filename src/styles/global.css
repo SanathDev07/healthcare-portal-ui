@@ -1,0 +1,78 @@
+@import './tokens.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-gray-100); }
+::-webkit-scrollbar-thumb { background: var(--color-gray-300); border-radius: var(--radius-full); }
+
+/* Focus ring - accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Skip to main content - accessibility */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  background: var(--color-primary-600);
+  color: white;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  z-index: 9999;
+  transition: top var(--transition-fast);
+}
+.skip-link:focus { top: var(--space-4); }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes typing {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+}
+
+.animate-fade-in { animation: fadeIn 0.3s ease forwards; }
+.animate-slide-in { animation: slideIn 0.3s ease forwards; }
+.animate-pulse { animation: pulse 1.5s ease infinite; }
+.animate-spin { animation: spin 1s linear infinite; }
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, var(--color-gray-100) 25%, var(--color-gray-200) 50%, var(--color-gray-100) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
